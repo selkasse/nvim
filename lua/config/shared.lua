@@ -1,4 +1,3 @@
-print ("loading shared VSCode/nvim config")
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true

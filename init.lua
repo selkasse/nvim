@@ -6,3 +6,4 @@ else
 	require("config.lazy") -- loads ~/.config/nvim/lua/config/lazy.lua
 	require("config.shared")
 end
+
