@@ -14,6 +14,9 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     end
 end
 
+
+-- vim.fn.stdpath("data") is /Users/sharif/.local/share/nvim
+-- lazypath is /Users/sharif/.local/share/nvim/lazy/lazy.nvim
 vim.opt.rtp:prepend(lazypath)
 
 -- Make sure to setup `mapleader` and `maplocalleader` before
@@ -22,120 +25,12 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-
--- point to this file??
-vim.opt.dictionary = "DICTIONARY"
-
-
-
--- LEARN SOMETHING, DAMN IT
-
-
--- Use an augroup to avoid duplicating the autocmd if you reload your config
-vim.api.nvim_create_augroup('AutoHelp', { clear = true})
-
-vim.api.nvim_create_autocmd('VimEnter', {
-    group = 'AutoHelp',
-    pattern = '*',
-    command = 'help ins-completion'
-})
-
-vim.api.nvim_create_autocmd('VimEnter', {
-    group = 'AutoHelp',
-    pattern = '*',
-    command = 'vsplit'
-})
-
-vim.api.nvim_create_autocmd('VimEnter', {
-    group = 'AutoHelp',
-    pattern = '*',
-    command = 'help lsp'
-})
-
--- place cursor over x in "print(x)"
--- use Control + ] to "jump to tag" (local x = 5)
--- use Option + T to "jump back" to x in print (x)
--- -- this was remapped from its original mapping of Control + T (conflicted with new terminal tab)
-
-local x = 5
--- hover over a function like print and press K to get a hover
-print(x)
-
-
--- clipboard
-vim.opt.clipboard="unnamedplus"
-
--- INDENTATION
-
--- Set tabstop and shiftwidth to 4 spaces
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-
--- Set softtabstop to 4
-vim.opt.softtabstop = 4
-
--- Convert tabs to spaces
-vim.opt.expandtab = true
-
--- Ensure that indents are consistent with shiftwidth
-vim.opt.smartindent = true
-vim.opt.autoindent = true
-
--- Disable highlighting on search
-vim.opt.hlsearch = false;
-
-
--- line numbers
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.signcolumn = "number"
-
--- REMAPS
-vim.keymap.set('n', 'grn', vim.lsp.buf.rename)
-vim.keymap.set('n', 'gra', vim.lsp.buf.code_action)
-vim.keymap.set('n', 'grr', vim.lsp.buf.references)
--- - "grn" is mapped in Normal mode to |vim.lsp.buf.rename()|
--- - "gra" is mapped in Normal and Visual mode to |vim.lsp.buf.code_action()|
--- - "grr" is mapped in Normal mode to |vim.lsp.buf.references()|
--- - "gri" is mapped in Normal mode to |vim.lsp.buf.implementation()|
--- - "gO" is mapped in Normal mode to |vim.lsp.buf.document_symbol()|
--- -  CTRL-S is mapped in Insert mode to |vim.lsp.buf.signature_help()|
-
--- run whole file
-vim.keymap.set('n', '<space><space>x', '<cmd>source %<CR>')
-
--- run current line
-vim.keymap.set('n', '<space>x', ':.lua<CR>')
-
--- run selected text
-vim.keymap.set('v', '<space>x', ':lua<CR>')
-
-vim.api.nvim_create_autocmd('TextYankPost', {
-    desc = 'Highlight when yanking (copying) text',
-    group = vim.api.nvim_create_augroup(
-        'kickstart-highlight-yank', { clear = true}
-    ),
-    callback = function()
-        vim.highlight.on_yank()
-    end,
-})
-
-
--- remap Option + w for window navigation
-vim.api.nvim_set_keymap('n', '<A-w>', '<C-w>', { noremap = true, silent = true })
-
--- remap Option + c for copy
-vim.api.nvim_set_keymap('n', '<A-c>', '"+y', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<A-c>', '"+y', { noremap = true, silent = true })
-
--- remap cControl + spacebar for omnicomplete
-vim.api.nvim_set_keymap('i', '<C-Space>', '<C-x><C-o>', { noremap = true, silent = true })
-
--- remap Option + t for "jump back to tag"
-vim.api.nvim_set_keymap('n', '<A-t>', '<C-t>', { noremap = true, silent = true })
+vim.cmd [[hi @function.builtin guifg=yellow]]
 
 
 -- Setup lazy.nvim
+--[[ ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/init.lua
+has a `setup` function, which is what is called below --]]
 require("lazy").setup({
     spec = {
         -- import your plugins
@@ -147,3 +42,4 @@ require("lazy").setup({
     -- colorscheme that will be used when installing plugins.
     install = { colorscheme = {"tokyonight"} },
 })
+

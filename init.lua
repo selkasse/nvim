@@ -3,7 +3,10 @@ if vim.g.vscode then
 	require("config.shared")
 else
 	-- regular nvim
-	require("config.lazy") -- loads ~/.config/nvim/lua/config/lazy.lua
-	require("config.shared")
-end
+    require("config.lazy") -- loads ~/.config/nvim/lua/config/lazy.lua
+    require("config.shared")
+    require("config.autocommands")
+    require("config.options")
+    require("config.keymaps")
+  end
 
