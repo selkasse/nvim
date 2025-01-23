@@ -30,6 +30,12 @@ vim.api.nvim_set_keymap('n', '!', '^', { noremap = true, silent = true })
 -- remap Option + w for window navigation
 vim.api.nvim_set_keymap('n', '<A-w>', '<C-w>', { noremap = true, silent = true })
 
+-- close window
+vim.keymap.set('n', '<space>c', '<cmd>close<CR>')
+
+-- clear quickfix list
+vim.keymap.set('n', '<space>qc', '<cmd>call setqflist([], "f")<CR>')
+
 
 -- remap Option + c for copy
 vim.api.nvim_set_keymap('n', '<A-c>', '"+y', { noremap = true, silent = true })

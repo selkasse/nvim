@@ -41,7 +41,8 @@ return {
       -- this is useful if you want to edit your nvim config while working on a project
       vim.keymap.set('n', '<space>fc', function()
         require('telescope.builtin').find_files {
-          cwd = vim.fn.stdpath("config")
+          cwd = vim.fn.stdpath("config"),
+          prompt_title = 'Find in Config (fc)'
         }
       end)
 
