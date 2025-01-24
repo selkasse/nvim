@@ -3,7 +3,7 @@ vim.opt.dictionary:append("~/dictionary.txt")
 
 
 -- clipboard
-vim.opt.clipboard="unnamedplus"
+vim.opt.clipboard = "unnamedplus"
 
 -- INDENTATION
 
@@ -29,3 +29,6 @@ vim.opt.hlsearch = false;
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "number"
+
+
+--vim.opt.laststatus = 3 -- Use global status line

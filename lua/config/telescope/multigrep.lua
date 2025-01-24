@@ -56,6 +56,7 @@ local live_multigrep = function(opts)
     finder = finder,
     previewer = conf.grep_previewer(opts),
     sorter = require('telescope.sorters').empty(), -- don't sort since rg will have already sorted it
+    layout_strategy = 'bottom_pane'
   }):find()
 end
 

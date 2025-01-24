@@ -12,10 +12,10 @@ vim.keymap.set('n', '<M-j>', '<cmd>cnext<CR>')
 vim.keymap.set('n', '<M-k>', '<cmd>cprev<CR>')
 
 -- remap ! to go to first non-blank character of line
-vim.api.nvim_set_keymap('n', '!', '^', { noremap = true, silent = true })
+vim.keymap.set('n', '!', '^')
 
 -- remap Option + w for window navigation
-vim.api.nvim_set_keymap('n', '<A-w>', '<C-w>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-w>', '<C-w>')
 
 -- close window
 vim.keymap.set('n', '<space>c', '<cmd>close<CR>')
@@ -25,8 +25,27 @@ vim.keymap.set('n', '<space>qc', '<cmd>call setqflist([], "f")<CR>')
 
 
 -- remap Option + c for copy
-vim.api.nvim_set_keymap('n', '<A-c>', '"+y', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<A-c>', '"+y', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-c>', '"+y')
+vim.keymap.set('v', '<A-c>', '"+y')
 
--- terminal
---vim.keymap.set
+-- TERMINAL
+JOB_ID = 0
+
+vim.keymap.set('n', '<space>t', function()
+  vim.cmd.new()
+  vim.cmd.term()
+  vim.cmd.wincmd("J")
+  vim.api.nvim_win_set_height(0, 15)
+
+  _G['JOB_ID'] = vim.bo.channel
+end)
+
+
+-- send data to terminal without being in the terminal
+vim.keymap.set('n', '<space>ex', function()
+  if (_G['JOB_ID']) then
+    vim.fn.chansend(_G['JOB_ID'], { 'ls -al\r\n' })
+  else
+    print('no job id to operate on')
+  end
+end)

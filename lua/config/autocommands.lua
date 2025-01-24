@@ -1,30 +1,20 @@
--- Use an augroup to avoid duplicating the autocmd if you reload your config
-vim.api.nvim_create_augroup('AutoHelp', { clear = true})
-
---vim.api.nvim_create_autocmd('VimEnter', {
-    --group = 'AutoHelp',
-    --pattern = '*',
-    --command = 'help ins-completion'
---})
-
---vim.api.nvim_create_autocmd('VimEnter', {
-    --group = 'AutoHelp',
-    --pattern = '*',
-    --command = 'vsplit'
---})
-
---vim.api.nvim_create_autocmd('VimEnter', {
-    --group = 'AutoHelp',
-    --pattern = '*',
-    --command = 'help lsp'
---})
-
 vim.api.nvim_create_autocmd('TextYankPost', {
-    desc = 'Highlight when yanking (copying) text',
-    group = vim.api.nvim_create_augroup(
-        'kickstart-highlight-yank', { clear = true}
-    ),
-    callback = function()
-        vim.highlight.on_yank()
-    end,
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup(
+    'kickstart-highlight-yank', { clear = true }
+  ),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
+
+vim.api.nvim_create_autocmd('TermOpen', {
+  desc = 'set global variable JOB_ID when terminal is opened',
+  group = vim.api.nvim_create_augroup(
+    'on-terminal-launch', { clear = true }
+  ),
+  callback = function()
+    print('in TermOpen autocmd')
+    _G['JOB_ID'] = vim.bo.channel
+  end,
 })

@@ -17,7 +17,7 @@ return {
           },
           help_tags = {
             theme = "ivy"
-          }
+          },
         },
         extensions = {
           fzf = {}
@@ -29,12 +29,15 @@ return {
       -- search help tags
       vim.keymap.set('n', '<space>fh', require('telescope.builtin').help_tags)
 
-      -- search the current directory
-      vim.keymap.set('n', '<space>fd', require('telescope.builtin').find_files)
+      local dir = vim.uv.cwd()
 
-      --[[ TODO: create custom configs like we did for multi-grep,
-           but all it will do is change the prompt window for each key mapping.
-           for example, when using <space> fc, the prompt will read 'Find in Config' --]]
+      -- search the current directory
+      vim.keymap.set('n', '<space>fd', function()
+        require('telescope.builtin').find_files {
+          --prompt_title = 'Find in Current Directory (fd)'
+          prompt_title = 'Find in ' .. dir
+        }
+      end)
 
 
       -- search ~/.config/neovim/ directory regardless of the current folder
@@ -49,7 +52,7 @@ return {
       -- search within plugins
       vim.keymap.set('n', '<space>fp', function()
         require('telescope.builtin').find_files {
-          cwd = vim.fs.joinpath(vim.fn.stdpath('data'), 'lazy')
+          cwd = tostring(vim.fs.joinpath(vim.fn.stdpath('data'), 'lazy'))
         }
       end)
 
