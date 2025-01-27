@@ -27,10 +27,6 @@ vim.keymap.set('n', '<space>qc', '<cmd>call setqflist([], "f")<CR>')
 vim.keymap.set('n', '<A-c>', '"+y')
 vim.keymap.set('v', '<A-c>', '"+y')
 
--- open Oil.nvim
-vim.keymap.set('n', '<space>o', '<cmd>Oil<CR>')
-
-
 -- TERMINAL
 -- go to normal mode in terminal
 vim.keymap.set('t', '<esc>', '<C-\\><C-N>')
