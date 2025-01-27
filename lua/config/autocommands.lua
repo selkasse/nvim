@@ -14,7 +14,6 @@ vim.api.nvim_create_autocmd('TermOpen', {
     'on-terminal-launch', { clear = true }
   ),
   callback = function()
-    print('in TermOpen autocmd')
     _G['JOB_ID'] = vim.bo.channel
   end,
 })
