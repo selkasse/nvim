@@ -17,6 +17,7 @@ vim.keymap.set('n', '!', '^')
 -- remap Option + w for window navigation
 vim.keymap.set('n', '<A-w>', '<C-w>')
 
+
 -- close window
 vim.keymap.set('n', '<space>c', '<cmd>close<CR>')
 
@@ -26,6 +27,8 @@ vim.keymap.set('n', '<space>qc', '<cmd>call setqflist([], "f")<CR>')
 -- remap Option + c for copy
 vim.keymap.set('n', '<A-c>', '"+y')
 vim.keymap.set('v', '<A-c>', '"+y')
+
+vim.keymap.set('n', '<A-t>', '<C-t>')
 
 -- TERMINAL
 -- go to normal mode in terminal
