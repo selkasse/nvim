@@ -31,4 +31,4 @@ vim.opt.relativenumber = true
 vim.opt.signcolumn = "number"
 
 
---vim.opt.laststatus = 3 -- Use global status line
+vim.cmd('syntax on')
