@@ -9,7 +9,7 @@ return {
 
       -- Set up an autocommand to format on save
       vim.api.nvim_create_autocmd("BufWritePre", {
-        pattern = { "*.js", "*.jsx", "*.ts", "*.tsx", "*.css", "*.scss", "*.html", "*.json" }, -- Add other file types as needed
+        pattern = { "*.js", "*.jsx", "*.ts", "*.tsx", "*.css", "*.scss", "*.html", "*.json", "*.cls"}, -- Add other file types as needed
         callback = function()
           vim.cmd("Prettier")
         end,
