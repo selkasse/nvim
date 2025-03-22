@@ -4,6 +4,10 @@ vim.keymap.set('n', '<space><space>x', '<cmd>source %<CR>')
 -- run current line
 vim.keymap.set('n', '<space>x', ':.lua<CR>')
 
+-- remap block comments
+vim.keymap.set('n', '<C-/>', 'gcc', { remap = true })
+vim.keymap.set('v', '<C-/>', 'gc', { remap = true })
+
 -- run selected text
 vim.keymap.set('v', '<space>x', ':lua<CR>')
 
@@ -18,6 +22,9 @@ vim.keymap.set('n', '<M-k>', '<cmd>cprev<CR>')
 -- clear quickfix list
 vim.keymap.set('n', '<space>qc', '<cmd>call setqflist([], "f")<CR>')
 
+-- show diagnstics
+vim.keymap.set('n', '<space>d', '<cmd>lua vim.diagnostic.open_float()<CR>')
+
 
 -- WINDOW NAVIGATION
 -- remap Option + w for window navigation
@@ -25,6 +32,7 @@ vim.keymap.set('n', '<A-w>', '<C-w>')
 
 -- close window
 vim.keymap.set('n', '<space>c', '<cmd>close<CR>')
+
 
 -- WINDOW RESIZING
 vim.keymap.set('n', '<space>s', ':split <CR>')

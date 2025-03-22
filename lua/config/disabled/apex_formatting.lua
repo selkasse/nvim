@@ -8,7 +8,7 @@ return {
         none_ls.builtins.formatting.alejandra,
 
         none_ls.builtins.formatting.prettier.with({
-          filetypes = { "apex" },
+          filetypes = { "apexcode" },
           extra_args = { "--plugin=prettier-plugin-apex", "--write" },
         }),
 
@@ -18,7 +18,7 @@ return {
 
         none_ls.builtins.diagnostics.pmd.with({
           -- pmd v6
-          filetypes = { "apex" },
+          filetypes = { "apexcode" },
           extra_args = { "--rulesets=$HOME/apex_ruleset.xml" }, -- Use the absolute path
         }),
       }

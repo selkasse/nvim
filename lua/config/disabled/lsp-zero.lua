@@ -30,11 +30,6 @@ return {
     --   -- Lesser used LSP functionality
     --   nmap('gd', vim.lsp.buf.definition, 'goto definition')
     --   nmap('gD', vim.lsp.buf.declaration, 'goto declaration')
-    --   nmap('<leader>fl', function(_)
-    --     -- So Apex formatting doesn't timeout
-    --     vim.lsp.buf.format({ timeout_ms = 2500 })
-    --   end, 'format file')
-    -- end
 
     local zero = require('lsp-zero')
     zero.extend_lspconfig()

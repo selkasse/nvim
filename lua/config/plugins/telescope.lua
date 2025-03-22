@@ -35,7 +35,9 @@ return {
       vim.keymap.set('n', '<space>fd', function()
         require('telescope.builtin').find_files {
           --prompt_title = 'Find in Current Directory (fd)'
-          prompt_title = 'Find in ' .. dir
+          prompt_title = 'Find in ' .. dir,
+          find_command = { "rg", "--files", "--no-ignore", "--hidden" },
+          file_ignore_patterns = { "node_modules" },
         }
       end)
 
