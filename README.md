@@ -1,3 +1,3 @@
-# test present
+# Setup
 
-- some line
+- install `lua-language-server`
